@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #001122, #003366);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+        .greeting {
+            text-align: center;
+            font-size: 8em;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff; }
+            to { text-shadow: 0 0 20px #ff0, 0 0 30px #ff0, 0 0 40px #ff0; }
+        }
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        .snow {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            animation: fall 10s linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars">
+        <!-- Random stars -->
+        <div class="star" style="left: 10%; top: 20%; width: 3px; height: 3px;"></div>
+        <div class="star" style="left: 20%; top: 40%; width: 2px; height: 2px;"></div>
+        <div class="star" style="left: 30%; top: 60%; width: 4px; height: 4px;"></div>
+        <div class="star" style="left: 40%; top: 30%; width: 2px; height: 2px;"></div>
+        <div class="star" style="left: 50%; top: 50%; width: 3px; height: 3px;"></div>
+        <div class="star" style="left: 60%; top: 70%; width: 2px; height: 2px;"></div>
+        <div class="star" style="left: 70%; top: 10%; width: 4px; height: 4px;"></div>
+        <div class="star" style="left: 80%; top: 80%; width: 3px; height: 3px;"></div>
+        <div class="star" style="left: 90%; top: 25%; width: 2px; height: 2px;"></div>
+    </div>
+    <div class="greeting"> Merry Christmas! </div>
+    <script>
+        // Simple snowfall effect
+        function createSnow() {
+            const snow = document.createElement('div');
+            snow.className = 'snow';
+            snow.textContent = '❄';
+            snow.style.left = Math.random() * 100 + '%';
+            snow.style.animationDuration = Math.random() * 5 + 5 + 's';
+            document.body.appendChild(snow);
+            setTimeout(() => snow.remove(), 10000);
+        }
+        setInterval(createSnow, 200);
+    </script>
+</body>
+</html>
